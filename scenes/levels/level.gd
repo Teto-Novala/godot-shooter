@@ -11,7 +11,7 @@ func _ready() -> void:
 	print(test_array[2])
 	
 func _process(delta: float) -> void:
-	$Logo.rotation_degrees += 5
+	$Logo.rotation_degrees += 50 * delta
 	
 	# flow -> if rotation > 180 -> 0
 	if $Logo.rotation_degrees > 180:
