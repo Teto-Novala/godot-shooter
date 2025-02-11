@@ -3,11 +3,14 @@ extends CharacterBody2D
 var can_laser := true
 var can_grenade := true
 
-signal laser_signal_custom
-signal grenade_signal_custom
+signal laser_signal_custom(pos)
+signal grenade_signal_custom(pos)
 
 @onready var laser_timer: Timer = $LaserTimer
 @onready var grenade_timer: Timer = $GrenadeTimer
+
+@onready var laser_start_positions: Node2D = $LaserStartPositions
+@onready var grenade_start_position: Node2D = $GrenadeStartPosition
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -24,16 +27,19 @@ func _process(_delta: float) -> void:
 	
 	# shooting mechanic
 	if Input.is_action_just_pressed("primary action") and can_laser:
-		print("Shoot")
-		laser_signal_custom.emit()
+		# randomly selected marker 2D for the laser
+		var laser_markers = laser_start_positions.get_children()
+		var selected_laser = laser_markers[randi() % laser_markers.size()]
 		can_laser = false
 		laser_timer.start()
+		laser_signal_custom.emit(selected_laser.global_position)
 	# grenade mechanic
 	if Input.is_action_just_pressed("secondary action") and can_grenade:
-		print("Grenaaddeee")
-		grenade_signal_custom.emit()
+		var grenade_markers = grenade_start_position.get_children()
+		var selected_grenade = grenade_markers[randi() % grenade_markers.size()]
 		can_grenade = false
 		grenade_timer.start()
+		grenade_signal_custom.emit(selected_grenade.global_position)
 
 
 func _on_laser_timer_timeout() -> void:
