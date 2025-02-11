@@ -1,22 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://bpty1crop4tqt"]
+[gd_scene load_steps=4 format=3 uid="uid://bpty1crop4tqt"]
 
 [ext_resource type="Script" path="res://scenes/levels/level.gd" id="1_1okj0"]
+[ext_resource type="PackedScene" uid="uid://ci0gxqce3ex2c" path="res://scenes/objects/gate.tscn" id="3_vvval"]
 [ext_resource type="PackedScene" uid="uid://ecvjumbkomjw" path="res://scenes/player/player.tscn" id="4_3mdym"]
-[ext_resource type="PackedScene" uid="uid://dpos2bpq4iov5" path="res://scenes/objects/car.tscn" id="4_frh4g"]
-[ext_resource type="PackedScene" uid="uid://dhm42fcdvfclg" path="res://scenes/enemies/drone.tscn" id="5_6dxb2"]
-[ext_resource type="PackedScene" uid="uid://dn5e7rd5o586p" path="res://scenes/objects/bed.tscn" id="5_40nhk"]
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_1okj0")
 
-[node name="Bed" parent="." instance=ExtResource("5_40nhk")]
-position = Vector2(829, 194)
+[node name="Gate" parent="." instance=ExtResource("3_vvval")]
+position = Vector2(525, -579)
 
 [node name="Player" parent="." instance=ExtResource("4_3mdym")]
-position = Vector2(262, 329)
+position = Vector2(603, 411)
 
-[node name="Car" parent="." instance=ExtResource("4_frh4g")]
-position = Vector2(520, 666)
-
-[node name="Drone" parent="." instance=ExtResource("5_6dxb2")]
-position = Vector2(3, 273)
+[connection signal="player_entered_gate" from="Gate" to="." method="_on_gate_player_entered_gate"]
+[connection signal="grenade_signal_custom" from="Player" to="." method="_on_player_grenade_signal_custom"]
+[connection signal="laser_signal_custom" from="Player" to="." method="_on_player_laser_signal_custom"]
