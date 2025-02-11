@@ -1,13 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://ecvjumbkomjw"]
 
 [ext_resource type="Texture2D" uid="uid://tcbj8i2eqs4c" path="res://graphics/player/player.png" id="1_7bw7g"]
-[ext_resource type="Texture2D" uid="uid://cmv4n35n70jsu" path="res://graphics/projectiles/blue.png" id="2_ibokh"]
+[ext_resource type="Script" path="res://scenes/player/player.gd" id="1_jqagg"]
 
 [node name="Player" type="Node2D"]
+script = ExtResource("1_jqagg")
 
 [node name="PlayerImage" type="Sprite2D" parent="."]
 texture = ExtResource("1_7bw7g")
-
-[node name="LaserImage" type="Sprite2D" parent="PlayerImage"]
-position = Vector2(20, -198)
-texture = ExtResource("2_ibokh")
