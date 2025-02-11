@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dpos2bpq4iov5"]
+
+[ext_resource type="Texture2D" uid="uid://t62tkuwqoreu" path="res://graphics/objects/infestation/main.png" id="1_xr4ex"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pnlgo"]
+size = Vector2(360, 528)
+
+[node name="Car" type="StaticBody2D"]
+
+[node name="Image" type="Sprite2D" parent="."]
+position = Vector2(3, -46)
+texture = ExtResource("1_xr4ex")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 26)
+shape = SubResource("RectangleShape2D_pnlgo")
