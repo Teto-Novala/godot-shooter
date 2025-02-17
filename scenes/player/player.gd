@@ -12,6 +12,9 @@ signal grenade_signal_custom(pos,direction)
 @onready var laser_start_positions: Node2D = $LaserStartPositions
 @onready var grenade_start_position: Node2D = $GrenadeStartPosition
 
+@onready var gpu_particles_2d: GPUParticles2D = $GPUParticles2D
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -32,6 +35,7 @@ func _process(_delta: float) -> void:
 	var player_direction = (get_global_mouse_position() - position).normalized()
 	if Input.is_action_just_pressed("primary action") and can_laser:
 		# randomly selected marker 2D for the laser
+		gpu_particles_2d.emitting = true
 		var laser_markers = laser_start_positions.get_children()
 		var selected_laser = laser_markers[randi() % laser_markers.size()]
 		can_laser = false
