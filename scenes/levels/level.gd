@@ -1,4 +1,5 @@
 extends Node2D
+class_name LevelParent
 
 var laser_scene: PackedScene = preload("res://scenes/projectiles/laser.tscn")
 @onready var player: CharacterBody2D = $Player
@@ -7,11 +8,6 @@ var laser_scene: PackedScene = preload("res://scenes/projectiles/laser.tscn")
 var grenade_scene: PackedScene = preload("res://scenes/projectiles/grenade.tscn")
 
 @onready var camera_2d: Camera2D = $Player/Camera2D
-
-func _on_gate_player_entered_gate(_body) -> void:
-	var tween = create_tween()
-	tween.tween_property(player,"speed",0,0.5)
-
 
 func _on_player_laser_signal_custom(pos,direction) -> void:
 	var laser = laser_scene.instantiate() as Area2D
