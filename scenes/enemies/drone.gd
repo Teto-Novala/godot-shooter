@@ -17,3 +17,6 @@ func _process(_delta: float) -> void:
 	# move and slide
 	move_and_slide()
 		
+
+func hit():
+	print("AAAHHHH")
