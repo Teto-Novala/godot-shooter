@@ -14,6 +14,9 @@ signal grenade_signal_custom(pos,direction)
 
 @onready var gpu_particles_2d: GPUParticles2D = $GPUParticles2D
 
+@export var max_speed:int = 500
+var speed: int = max_speed
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -25,7 +28,7 @@ func _process(_delta: float) -> void:
 	
 	# input
 	var direction = Input.get_vector("left","right","up","down")
-	velocity = direction * 500
+	velocity = direction * speed
 	move_and_slide()
 	
 	# rotate player

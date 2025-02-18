@@ -6,9 +6,11 @@ var laser_scene: PackedScene = preload("res://scenes/projectiles/laser.tscn")
 
 var grenade_scene: PackedScene = preload("res://scenes/projectiles/grenade.tscn")
 
-func _on_gate_player_entered_gate(body) -> void:
-	print("Player has entered gate")
-	print(body)
+@onready var camera_2d: Camera2D = $Player/Camera2D
+
+func _on_gate_player_entered_gate(_body) -> void:
+	var tween = create_tween()
+	tween.tween_property(player,"speed",0,0.5)
 
 
 func _on_player_laser_signal_custom(pos,direction) -> void:
@@ -24,3 +26,15 @@ func _on_player_grenade_signal_custom(pos,direction) -> void:
 	grenade.position = pos
 	grenade.linear_velocity = direction * grenade.speed
 	projectiles.add_child(grenade)
+
+
+
+func _on_house_player_entered() -> void:
+	var tween = get_tree().create_tween()
+	tween.tween_property(camera_2d,"zoom",Vector2(1,1),1).set_trans(Tween.TRANS_QUAD)
+
+
+func _on_house_player_exited() -> void:
+	var tween = get_tree().create_tween()
+	tween.tween_property(camera_2d,"zoom",Vector2(0.6,0.6),2)
+	
