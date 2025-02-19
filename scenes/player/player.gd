@@ -14,7 +14,7 @@ signal grenade_signal_custom(pos,direction)
 
 @onready var gpu_particles_2d: GPUParticles2D = $GPUParticles2D
 
-@export var max_speed:int = 500
+@export var max_speed:int = 800
 var speed: int = max_speed
 
 
