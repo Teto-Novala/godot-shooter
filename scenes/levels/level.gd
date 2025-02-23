@@ -9,12 +9,15 @@ var grenade_scene: PackedScene = preload("res://scenes/projectiles/grenade.tscn"
 
 @onready var camera_2d: Camera2D = $Player/Camera2D
 
+@onready var ui: CanvasLayer = $UI
+
 func _on_player_laser_signal_custom(pos,direction) -> void:
 	var laser = laser_scene.instantiate() as Area2D
 	laser.position = pos
 	laser.rotation_degrees = rad_to_deg(direction.angle())+90
 	laser.direction = direction
 	projectiles.add_child(laser)
+	ui.update_laser_text()
 
 
 func _on_player_grenade_signal_custom(pos,direction) -> void:
@@ -22,6 +25,7 @@ func _on_player_grenade_signal_custom(pos,direction) -> void:
 	grenade.position = pos
 	grenade.linear_velocity = direction * grenade.speed
 	projectiles.add_child(grenade)
+	ui.update_grenade_text()
 
 
 
