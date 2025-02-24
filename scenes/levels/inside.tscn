@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cqx4tuibqewqv"]
+[gd_scene load_steps=14 format=3 uid="uid://cqx4tuibqewqv"]
 
 [ext_resource type="PackedScene" uid="uid://bpty1crop4tqt" path="res://scenes/levels/level.tscn" id="1_22lml"]
 [ext_resource type="Texture2D" uid="uid://diqjv6sa6fo2k" path="res://graphics/ground/dirt.png" id="2_5ir65"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://gyv2dm5yn06s" path="res://graphics/lights/overlays/hole.png" id="6_j6rur"]
 [ext_resource type="Texture2D" uid="uid://e676qimuq1lm" path="res://graphics/lights/textures/circle.png" id="6_rfxqo"]
 [ext_resource type="Texture2D" uid="uid://cdsifoumugemv" path="res://graphics/lights/overlays/lattice.png" id="7_jx3ha"]
+[ext_resource type="PackedScene" uid="uid://cnxs4i08aw6fm" path="res://scenes/items/item.tscn" id="12_78gtj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xio2i"]
 size = Vector2(428, 758)
@@ -205,6 +206,7 @@ metadata/_edit_lock_ = true
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="." index="4"]
 color = Color(0.388361, 0.530668, 0.47208, 1)
+energy = 1.92
 blend_mode = 1
 metadata/_edit_lock_ = true
 
@@ -213,5 +215,8 @@ metadata/_edit_lock_ = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ExitGateArea" index="0"]
 position = Vector2(9097, -394)
 shape = SubResource("RectangleShape2D_xio2i")
+
+[node name="Item" parent="." index="7" instance=ExtResource("12_78gtj")]
+position = Vector2(6633, -373)
 
 [connection signal="body_entered" from="ExitGateArea" to="." method="_on_exit_gate_area_body_entered"]

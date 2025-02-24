@@ -5,6 +5,7 @@ var can_grenade := true
 
 signal laser_signal_custom(pos,direction)
 signal grenade_signal_custom(pos,direction)
+signal update_ui_stats
 
 @onready var laser_timer: Timer = $LaserTimer
 @onready var grenade_timer: Timer = $GrenadeTimer
@@ -62,3 +63,12 @@ func _on_laser_timer_timeout() -> void:
 
 func _on_grenade_timer_timeout() -> void:
 	can_grenade = true
+	
+func add_item(type:String)->void:
+	if type == 'laser':
+		Global.laser_amount += 10
+	
+	if type == 'grenade':
+		Global.grenade_amount += 5
+	update_ui_stats.emit()
+	
