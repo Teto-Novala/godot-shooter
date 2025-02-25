@@ -30,3 +30,6 @@ func _on_attack_area_body_exited(_body: Node2D) -> void:
 
 func _on_laser_cooldown_timeout() -> void:
 	can_laser = true
+
+func hit():
+	print("scout was hit")
