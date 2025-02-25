@@ -1,9 +1,13 @@
 extends CharacterBody2D
 
+var health:int = 60
+
 var player_nearby: bool = false
 var can_laser:bool = true
 
 var right_gun_use:bool = true
+
+var vulnerable: bool = true
 
 signal laser(pos,direction)
 
@@ -17,7 +21,7 @@ func _process(_delta: float) -> void:
 			var direction: Vector2 = (Global.player_pos - position).normalized()
 			laser.emit(pos,direction)
 			can_laser = false
-			$LaserCooldown.start()
+			$Timers/LaserCooldown.start()
 
 
 func _on_attack_area_body_entered(_body: Node2D) -> void:
@@ -28,8 +32,19 @@ func _on_attack_area_body_exited(_body: Node2D) -> void:
 	player_nearby = false
 
 
+
+func hit():
+	if vulnerable:
+		health -= 10
+		vulnerable = false
+		$Timers/HitTimer.start()
+	if health <= 0:
+		queue_free()
+
+
 func _on_laser_cooldown_timeout() -> void:
 	can_laser = true
 
-func hit():
-	print("scout was hit")
+
+func _on_hit_timer_timeout() -> void:
+	vulnerable = true
