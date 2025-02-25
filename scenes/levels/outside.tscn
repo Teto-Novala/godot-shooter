@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cltsd3uqdwt2o"]
+[gd_scene load_steps=21 format=3 uid="uid://cltsd3uqdwt2o"]
 
 [ext_resource type="PackedScene" uid="uid://bpty1crop4tqt" path="res://scenes/levels/level.tscn" id="1_eoewg"]
 [ext_resource type="Texture2D" uid="uid://ddlobepbbtjdc" path="res://graphics/ground/stones.png" id="2_am3gm"]
@@ -15,7 +15,6 @@
 [ext_resource type="PackedScene" uid="uid://c7q4r8p1bgx1" path="res://scenes/houses/house.tscn" id="11_g3fdp"]
 [ext_resource type="PackedScene" uid="uid://wduafsqadg5u" path="res://scenes/objects/steam_vent.tscn" id="12_igm6l"]
 [ext_resource type="PackedScene" uid="uid://vchfsqmtjioy" path="res://scenes/objects/light_fan_animation.tscn" id="13_g2t04"]
-[ext_resource type="PackedScene" uid="uid://cnxs4i08aw6fm" path="res://scenes/items/item.tscn" id="16_f3m04"]
 [ext_resource type="PackedScene" uid="uid://clxn1ggndxwcd" path="res://scenes/container/toilet.tscn" id="17_knvtp"]
 [ext_resource type="PackedScene" uid="uid://cywurs21bhfn4" path="res://scenes/container/crate.tscn" id="18_48tmh"]
 
@@ -108,18 +107,18 @@ position = Vector2(-1728, 1272)
 autoplay = "default"
 frame_progress = 0.446296
 
-[node name="Gate" parent="." index="1" instance=ExtResource("2_jnqdu")]
+[node name="Gate" parent="." index="2" instance=ExtResource("2_jnqdu")]
 position = Vector2(584, -862)
 
-[node name="Toilet" parent="." index="2" instance=ExtResource("17_knvtp")]
+[node name="Toilet" parent="." index="3" instance=ExtResource("17_knvtp")]
 position = Vector2(1063, 354)
 
-[node name="Crate" parent="." index="3" instance=ExtResource("18_48tmh")]
+[node name="Crate" parent="." index="4" instance=ExtResource("18_48tmh")]
 position = Vector2(656, 524)
 
-[node name="Player" parent="." index="6"]
+[node name="Player" parent="." index="8"]
 position = Vector2(629, 50)
 
-[node name="Item" parent="." index="8" instance=ExtResource("16_f3m04")]
-
+[connection signal="player_entered" from="Ground/House" to="." method="_on_house_player_entered"]
+[connection signal="player_exited" from="Ground/House" to="." method="_on_house_player_exited"]
 [connection signal="player_entered_gate" from="Gate" to="." method="_on_gate_player_entered_gate"]

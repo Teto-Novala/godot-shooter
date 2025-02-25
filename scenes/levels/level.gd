@@ -28,7 +28,6 @@ func _on_player_laser_signal_custom(pos,direction) -> void:
 	laser.rotation_degrees = rad_to_deg(direction.angle())+90
 	laser.direction = direction
 	projectiles.add_child(laser)
-	ui.update_laser_text()
 
 
 func _on_player_grenade_signal_custom(pos,direction) -> void:
@@ -36,21 +35,4 @@ func _on_player_grenade_signal_custom(pos,direction) -> void:
 	grenade.position = pos
 	grenade.linear_velocity = direction * grenade.speed
 	projectiles.add_child(grenade)
-	ui.update_grenade_text()
-
-
-
-func _on_house_player_entered() -> void:
-	var tween = get_tree().create_tween()
-	tween.tween_property(camera_2d,"zoom",Vector2(1,1),1).set_trans(Tween.TRANS_QUAD)
-
-
-func _on_house_player_exited() -> void:
-	var tween = get_tree().create_tween()
-	tween.tween_property(camera_2d,"zoom",Vector2(0.6,0.6),2)
 	
-
-
-func _on_player_update_ui_stats() -> void:
-	ui.update_laser_text()
-	ui.update_grenade_text()
