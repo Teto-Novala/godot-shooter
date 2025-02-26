@@ -65,4 +65,4 @@ func _on_grenade_timer_timeout() -> void:
 	can_grenade = true
 	
 func hit():
-	print("Player wa hit")
+	Global.health -= 10
