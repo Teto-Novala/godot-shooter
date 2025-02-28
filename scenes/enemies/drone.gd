@@ -47,7 +47,7 @@ func hit():
 func stop_move():
 	speed_multiplier = 0
 
-func _on_notice_area_body_entered(body: Node2D) -> void:
+func _on_notice_area_body_entered(_body: Node2D) -> void:
 	active = true
 	var tween = create_tween()
 	tween.tween_property(self,"speed_up",speed,10)
