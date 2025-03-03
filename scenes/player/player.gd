@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 var can_laser := true
 var can_grenade := true
+var joystick_deadzone := 0.1
+var using_joystick := false
 
 signal laser_signal_custom(pos,direction)
 signal grenade_signal_custom(pos,direction)
@@ -33,10 +35,19 @@ func _process(_delta: float) -> void:
 	Global.player_pos = global_position
 	
 	# rotate player
-	look_at(get_global_mouse_position())
+	var look_direction := Input.get_vector("look_left", "look_right", "look_up", "look_down")
+	using_joystick = look_direction.length() > joystick_deadzone
+		
+	if using_joystick:
+		rotation = look_direction.angle()
+	else:
+		# Matikan rotasi mouse jika joystick aktif
+		look_at(get_global_mouse_position())
+		
+	var player_direction = Vector2.RIGHT.rotated(rotation)
 	
 	# shooting mechanic
-	var player_direction = (get_global_mouse_position() - position).normalized()
+	#var player_direction = (get_global_mouse_position() - position).normalized()
 	if Input.is_action_just_pressed("primary action") and can_laser and Global.laser_amount > 0:
 		# randomly selected marker 2D for the laser
 		Global.laser_amount -= 1
