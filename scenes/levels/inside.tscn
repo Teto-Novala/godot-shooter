@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://cqx4tuibqewqv"]
+[gd_scene load_steps=28 format=3 uid="uid://cqx4tuibqewqv"]
 
 [ext_resource type="PackedScene" uid="uid://bpty1crop4tqt" path="res://scenes/levels/level.tscn" id="1_22lml"]
 [ext_resource type="Texture2D" uid="uid://diqjv6sa6fo2k" path="res://graphics/ground/dirt.png" id="2_5ir65"]
@@ -25,6 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://cvy51nykigcd1" path="res://graphics/objects/infestation/small_4.png" id="18_v6knx"]
 [ext_resource type="Texture2D" uid="uid://bhh4t2h7xfw7w" path="res://graphics/objects/infestation/spikes.png" id="19_e65u1"]
 [ext_resource type="PackedScene" uid="uid://dhm42fcdvfclg" path="res://scenes/enemies/drone.tscn" id="20_hnuxo"]
+[ext_resource type="PackedScene" uid="uid://duh4f3l3s1a7i" path="res://scenes/enemies/bug.tscn" id="21_75v8i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xio2i"]
 size = Vector2(428, 758)
@@ -899,6 +900,7 @@ polygon = PackedVector2Array(7163, 149, 7168, 120, 7185, 112, 7196, 113, 7212, 1
 metadata/_edit_lock_ = true
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="." index="4"]
+visible = false
 color = Color(0.388361, 0.530668, 0.47208, 1)
 energy = 1.92
 blend_mode = 1
@@ -912,6 +914,87 @@ shape = SubResource("RectangleShape2D_xio2i")
 
 [node name="Drone" parent="Enemies" index="0" instance=ExtResource("20_hnuxo")]
 position = Vector2(6217, 2563)
+
+[node name="Bug" parent="Enemies" index="1" instance=ExtResource("21_75v8i")]
+position = Vector2(7581, 1606)
+
+[node name="Bug2" parent="Enemies" index="2" instance=ExtResource("21_75v8i")]
+position = Vector2(4176, 1391)
+
+[node name="Bug3" parent="Enemies" index="3" instance=ExtResource("21_75v8i")]
+position = Vector2(2547, 2025)
+
+[node name="Bug4" parent="Enemies" index="4" instance=ExtResource("21_75v8i")]
+position = Vector2(850, 2161)
+
+[node name="Bug5" parent="Enemies" index="5" instance=ExtResource("21_75v8i")]
+position = Vector2(1472, 3417)
+
+[node name="Bug6" parent="Enemies" index="6" instance=ExtResource("21_75v8i")]
+position = Vector2(2683, 4367)
+
+[node name="Bug7" parent="Enemies" index="7" instance=ExtResource("21_75v8i")]
+position = Vector2(2072, 5510)
+
+[node name="Bug8" parent="Enemies" index="8" instance=ExtResource("21_75v8i")]
+position = Vector2(1653, 5148)
+
+[node name="Bug9" parent="Enemies" index="9" instance=ExtResource("21_75v8i")]
+position = Vector2(-531, 5917)
+
+[node name="Bug10" parent="Enemies" index="10" instance=ExtResource("21_75v8i")]
+position = Vector2(-1176, 6166)
+
+[node name="Bug11" parent="Enemies" index="11" instance=ExtResource("21_75v8i")]
+position = Vector2(-1459, 4786)
+
+[node name="Bug12" parent="Enemies" index="12" instance=ExtResource("21_75v8i")]
+position = Vector2(-724, 4322)
+
+[node name="Bug13" parent="Enemies" index="13" instance=ExtResource("21_75v8i")]
+position = Vector2(-1969, 3168)
+
+[node name="Bug14" parent="Enemies" index="14" instance=ExtResource("21_75v8i")]
+position = Vector2(-962, 2319)
+
+[node name="Bug15" parent="Enemies" index="15" instance=ExtResource("21_75v8i")]
+position = Vector2(-2998, 2172)
+
+[node name="Bug16" parent="Enemies" index="16" instance=ExtResource("21_75v8i")]
+position = Vector2(-3960, 3224)
+
+[node name="Bug17" parent="Enemies" index="17" instance=ExtResource("21_75v8i")]
+position = Vector2(-4775, 1866)
+
+[node name="Bug18" parent="Enemies" index="18" instance=ExtResource("21_75v8i")]
+position = Vector2(-5273, 463)
+
+[node name="Bug19" parent="Enemies" index="19" instance=ExtResource("21_75v8i")]
+position = Vector2(-3870, 112)
+
+[node name="Bug20" parent="Enemies" index="20" instance=ExtResource("21_75v8i")]
+position = Vector2(-3395, -1189)
+
+[node name="Bug21" parent="Enemies" index="21" instance=ExtResource("21_75v8i")]
+position = Vector2(-5816, -1166)
+
+[node name="Bug22" parent="Enemies" index="22" instance=ExtResource("21_75v8i")]
+position = Vector2(-6642, 327)
+
+[node name="Bug23" parent="Enemies" index="23" instance=ExtResource("21_75v8i")]
+position = Vector2(-1234, -1280)
+
+[node name="Bug24" parent="Enemies" index="24" instance=ExtResource("21_75v8i")]
+position = Vector2(-1325, 349)
+
+[node name="Bug25" parent="Enemies" index="25" instance=ExtResource("21_75v8i")]
+position = Vector2(429, -647)
+
+[node name="Bug26" parent="Enemies" index="26" instance=ExtResource("21_75v8i")]
+position = Vector2(1855, 428)
+
+[node name="Bug27" parent="Enemies" index="27" instance=ExtResource("21_75v8i")]
+position = Vector2(2737, -1348)
 
 [node name="Player" parent="." index="8"]
 position = Vector2(8622, -460)

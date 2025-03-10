@@ -4,6 +4,8 @@ var player_vulnerable:bool = true
 
 signal stats_change
 
+var player_hit_sound:AudioStreamPlayer2D
+
 var laser_amount = 20:
 	set(value):
 		laser_amount = value
@@ -21,6 +23,7 @@ var health = 60:
 				health = value
 				player_vulnerable = false
 				player_invunerable_timer()
+				player_hit_sound.play()
 		stats_change.emit()
 
 func player_invunerable_timer():
@@ -28,3 +31,8 @@ func player_invunerable_timer():
 	player_vulnerable = true
 
 var player_pos: Vector2
+
+func _ready() -> void:
+	player_hit_sound = AudioStreamPlayer2D.new()
+	player_hit_sound.stream = load("res://audio/solid_impact.ogg")
+	add_child(player_hit_sound)
